@@ -1,0 +1,34 @@
+{% extends 'computers/base.html' %}
+
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+  <div class="col-md-7 mx-auto">
+    <div class="card mb-3" style="max-width: 800px; background-color: azure;">
+      <a href="{% url 'index' %}" class="btn btn-primary btn-sm m-3" style="float: left; width: 100px;"><i
+          class="fa fa-arrow-left" aria-hidden="true"></i> Go Back</a><br>
+      <div class="row g-0 mx-auto">
+        <div class="col-md-4">
+          <img src="{{ assign.serial_no.photo.url }}" class="img-fluid rounded-start" alt="..." style="padding: 10px;">
+        </div>
+        <div class="col-md-8">
+          <div class="card-body">
+            <h4 class="card-title">{{assign.serial_no}}</h4>
+            <ul>
+              <div class="card-text"><b>MAKE :</b> {{assign.serial_no.computer_make}}</div>
+              <div class="card-text"><b>MODEL:</b> {{assign.serial_no.computer_model}}</div>
+              <div class="card-text"><b>RAM:</b> {{assign.serial_no.ram}}</div>
+              <div class="card-text"><b>TYPE:</b> {{assign.serial_no.category}}</div>
+              <div class="card-text"><b>MEMORY:</b> {{assign.serial_no.memory}}</div>
+              <div class="card-text"><b>PROCESSOR:</b> {{assign.serial_no.processor}}</div>
+              <div class="card-text"><b>CONDITION:</b> {{assign.serial_no.condition}}</div>
+              <div class="card-text"><b>COMMENT:</b> {{assign.serial_no.comment}}</div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'computers/base.html' %}
+
+
+{% block content %}
+<br>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+<div id="layoutSidenav_content">   
+<main class="container-fluid">
+    <div class="p-5 rounded" style="background-color:azure;">
+        <h1><strong>Role</strong></h1>
+        
+        <a class="btn btn-primary" href="{% url 'createrole' %}" role="button" style="float:right;">New Role</a>
+
+        <br>
+        <br>
+
+        <hr>
+
+        <table class="table table-success table-striped">
+            
+            {% for role in roles %}
+             <tr>
+                 <th>{{role.name}}</th>
+ 
+                <th>
+                   <a href="{% url 'updaterole' role.id %}"><i class="fa fa-pencil-square-o fa-fw"></i></a>
+                </th>
+                <th>
+                   <a href="{% url 'deleterole' role.id %}" aria-label="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </th> 
+             </tr>   
+
+            {% endfor %}
+        </table>
+    </div>
+</main>
+</div>  
+{% endblock %}

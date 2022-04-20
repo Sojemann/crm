@@ -1,0 +1,53 @@
+{% extends 'computers/base.html' %}
+
+
+{% block content %}
+<br>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+<div id="layoutSidenav_content">  
+<main class="container-fluid">
+    <div class="p-5 rounded" style="background-color:azure;">
+        <h1><strong>Department</strong></h1><br>
+        
+        <a class="btn btn-primary" href="{% url 'createdepartment' %}" role="button" style="float:right;">New Department</a><br><br>
+        <hr>
+
+        <table class="table table-success table-striped">
+            
+            {% for department in departments %}
+            <tr>
+                <td>
+                    <th>{{department.name}}</th>
+                </td> 
+                <td>
+                   <a href="{% url 'updatedepartment' department.id %}"><i class="fa fa-pencil-square-o fa-fw"></i></a>
+                </td>
+                <td>
+                   <a href="{% url 'deletedepartment' department.id %}" aria-label="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </td> 
+
+            </tr>
+             
+
+            {% endfor %}
+        </table>
+    </div>
+</main>
+</div>
+{% endblock %}

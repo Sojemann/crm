@@ -1,0 +1,52 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+<main class="container-fluid">
+    <div class="p-5 rounded" style="background-color:azure;">
+        <!-- <form class="d-flex" style="float: right;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name-search" value="{{search_input}}">
+        </form><br><br><br> -->
+        <h1>Laptop Request</h1>
+        <p class="lead">SKLD Computers Request.</p>
+        <a href="{% url 'laptoprequest' %}" class="btn btn-primary btn-sm" style="float:right;">Make Request</a><br><br>
+       <!--  <h1>Computer Inventory</h1>
+        <p class="lead">Everything SKLD Computers in the organization.</p> -->
+        
+        <hr>
+        <table class="table table-success table-striped">
+            <tr>
+                <th>New Employee</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th>Resumption Date</th>
+                <th>Created_by</th>
+                {% if user.is_admin %}
+                <th></th>
+                <th></th>
+                {% endif %}
+            </tr>
+            {% for laptoprequest in laptoprequests %}
+         <tr>
+            <td>{{laptoprequest.new_employee}}</td>
+            <td>{{laptoprequest.new_department}}</td>
+            <td>{{laptoprequest.new_role}}</th>
+            <td>{{laptoprequest.resumption_date}}</th>
+            <td>{{laptoprequest.created_by}}</th>
+            {% if user.is_admin %}
+            <td>
+                <a href="{% url 'assignlaptop' %}" class="btn btn-primary btn-sm" style="float:right;">Assign Laptop</a><br><br>
+            </td>
+            <td>
+              <a href="{% url 'deletelaptoprequest' laptoprequest.id %}" aria-label="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </td>
+            {% endif %}
+         </tr>   
+
+        {% endfor %}
+        </table>
+    </div>
+</main>
+</div>
+{% endblock %}

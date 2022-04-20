@@ -1,0 +1,56 @@
+{% extends 'computers/base.html' %}
+
+{% block title %}
+User Details
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container m-5">
+    <center>
+        <h1> User Details </h1>
+    </center>
+</div>
+
+<br>
+<br>
+<hr>
+<div class="col-md-7 mx-auto">
+    <div class="card mb-3" style="max-width: 800px; background-color: azure;">
+        <a href="{% url 'user' %}" class="btn btn-primary btn-sm m-3" style="float: left; width: 100px;">Go
+            Back</a><br>
+        <div class="row g-0 mx-auto">
+
+            <div>
+                <div class="card-body">
+                    <h4 class="card-title">{{account.username}}</h4>
+                    <ul>
+
+                        <div class="card-text"><b>Email:</b> {{account.email}}</div>
+                        <div class="card-text"><b>Admin:</b> {{account.is_admin}}</div>
+                        <div class="card-text"><b>Employee:</b> {{account.is_employee}}</div>
+                        <div class="card-text"><b>Human Resource:</b> {{account.is_hr}}</div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div >
+        <table class="table table-success table-striped">
+            <tr>
+                {% for group in ugroup %}
+                    <tr>
+
+                        <td> {{group.name}}</td>
+                        
+                    </tr>
+                {% endfor %}
+            </tr>
+        </table>
+    </div> -->
+</div>
+
+
+
+{% endblock content %}

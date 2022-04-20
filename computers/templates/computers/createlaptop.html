@@ -1,0 +1,69 @@
+{% extends 'computers/base.html' %}
+
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+        <main class="container-fluid">
+            <div class="p-5 rounded" style="background-color:azure;">
+                <h4 style="text-align: center;font-size: 30px;">CREATE LAPTOP</h4>
+                <a href="{% url 'laptop' %}" class="btn btn-primary btn-sm" style="float: left; width: 100px;">Go Back</a><br><br>
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.serial_no|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.computer_make|as_crispy_field}}
+                        </div>  
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.computer_model|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.ram|as_crispy_field}}
+                        </div>  
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.category|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.memory|as_crispy_field}}
+                        </div>  
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{form.processor|as_crispy_field}}
+                        </div>
+                        <div class="col-md-6">
+                            {{form.condition|as_crispy_field}}
+                        </div>  
+                    </div>
+                    <br>
+                    {{form.photo|as_crispy_field}}
+                    <br>
+                    {{form.comment|as_crispy_field}}
+                <br>
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </div>
+            <br>
+            
+            </form>
+
+        </div>
+
+</div>
+</main>
+</div>
+
+{% endblock %}
+
+

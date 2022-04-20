@@ -1,0 +1,59 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<br>
+<div class="row">
+
+    <div class="col-md-4 mx-auto">
+        <div style="background-color: antiquewhite;" class="card-header"><b> Update Assigned Laptop </b> </div>
+
+        <div class="card card-body">
+            <a href="{% url 'index' %}" class="btn btn-primary btn-sm" style="float: left; width: 100px;">Go
+                Back</a><br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}     
+        </div>
+        <br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+{% endblock content %}
+
+<!-- <div class="row mb-3" style="width:300px;">
+    <label class="form-label">Employee</label>
+    <select name="employee" class="form-control">
+        <option value="{{employee.id}}"> {{assign.employee}}</option>
+        {% for employee in employees %}
+        <option value="{{employee.id}}">{{employee.name}}</option>
+
+        {% endfor %}
+    </select>
+</div>
+<div class="row mb-3" style="width:300px;">
+    <label class="form-label">Email</label>
+    <input type="email" placeholder="Email.." name="email" class="form-control" value="{{assign.email}}">
+</div>
+<div class="row mb-3" style="width:300px;">
+    <label class="form-label">Serial Number</label>
+    <select name="serial_no" class="form-control">
+        <option value="none">{{assign.serial_no}} </option>
+        {% for laptop in laptops %}
+        <option value="{{laptop.id}}">{{laptop.serial_no}}</option>
+
+        {% endfor %}
+    </select>
+</div>
+<div class="row mb-3" style="width:300px;">
+    <label class="form-label">Previous User</label>
+    <input type="text" placeholder="Input previous user" name="previous_user" class="form-control" value="{{assign.previous_user}}">
+</div> -->

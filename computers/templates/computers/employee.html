@@ -1,0 +1,50 @@
+{% extends 'computers/base.html' %}
+
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+<main class="container-fluid">
+    <div class="p-5 rounded" style="background-color:azure;">
+        <h4 style="text-align: center;font-size: 30px;">EMPLOYEES</h4>
+        <form class="d-flex" style="float: right;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name-search" value="{{search_input}}">
+        </form><br><br><br>
+        
+       <!--  <h1>Computer Inventory</h1>
+        <p class="lead">Everything SKLD Computers in the organization.</p> -->
+        <a href="{% url 'createemployee' %}" class="btn btn-primary btn-sm" style="float:right;">New Employee</a><br><br>
+        <hr>
+        <table class="table table-success table-striped">
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Role</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th></th>
+                <th></th>
+            </tr>
+            {% for employee in employees %}
+         <tr>
+            <th></th>
+            <td><a href="{% url 'employeedetail' employee.id %}">{{employee.name}}</a></td>
+            <td>{{employee.department}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.email}}</th>
+            <td>{{employee.phone}}</th>
+            <td>
+              <a href="{% url 'updateemployee' employee.id %}"><i class="fa fa-pencil-square-o fa-fw"></i></a>
+            </td>
+            <td>
+              <a href="{% url 'deleteemployee' employee.id %}" aria-label="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+         </tr>   
+
+        {% endfor %}
+        </table>
+    </div>
+</main>
+</div>
+{% endblock %}

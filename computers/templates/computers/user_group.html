@@ -1,0 +1,52 @@
+{% extends 'computers/base.html' %}
+
+{% block title %}
+    Add User To Group
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container m-5">
+    <a class="btn btn-primary btn-sm" href="{% url 'listuser' %}">Go Back</a>
+    <br>
+    <br>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="form-group">
+
+            <div class="row">
+                <label>Group</label>
+               <select id="gname" name="gname">
+                  
+                    {% for i in group %}
+
+                        <option value="{{i.name}}">{{i.name}}</option>
+
+                    {% endfor %}
+               </select>
+            </div> 
+            <br>
+            <br>
+            <button type="submit" class="btn btn-primary">Add to Group</button>
+        </div>
+      </form>
+
+{% endblock content %}
+
+
+            
+           <!--  <div class="info-line">
+				<i class="fas fa-phone icon-gradient"></i>
+				<input type="text" class="type" name= "username" placeholder="..." value = "{{user.username}}">
+			</div> -->
+            <!-- <div class="row">
+                <label>Username</label>
+               <select name="username">
+                  
+                    {% for user in users %}
+                        <option value="{{user.id}}">{{user.username}}</option>
+
+                    {% endfor %}
+               </select> 
+            </div> -->

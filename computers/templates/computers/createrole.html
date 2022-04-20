@@ -1,0 +1,24 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+    <main class="container-fluid">
+        <div class="p-5 rounded" style="background-color:azure;">
+            <h4 style="text-align: center;font-size: 30px;">CREATE ROLE</h4>
+            <a href="{% url 'role' %}" class="btn btn-primary btn-sm" style="float: left; width: 100px;">Go
+                Back</a>
+            <br>
+            <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{form.as_p}}
+
+                <br>
+                <input class="btn btn-primary" type="submit" value="Submit">
+            </form>
+        </div>
+    </main>
+</div>
+
+{% endblock content %}

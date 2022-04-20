@@ -1,0 +1,65 @@
+{% extends 'computers/base.html' %}
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+    <main class="container-fluid">
+        <div class="p-5 rounded" style="background-color:azure;">
+            <h4 style="text-align: center;font-size: 30px;">ASSIGN LAPTOP</h4>
+            <a href="{% url 'index' %}" class="btn btn-primary btn-sm" style="float: left; width: 100px;">Go
+                Back</a>
+                <br>
+                <br>
+            <form action="" method="POST">
+                {% csrf_token %}
+
+                {{form.as_p}}
+
+        <br>
+
+        <input class="btn btn-primary" type="submit" value="Submit">
+        </form>
+
+    </div>
+
+</div>
+
+</div>
+
+
+
+
+{% endblock content %}
+
+
+
+
+<!-- <div class="row">
+    <label>Employee</label>
+    <select name="employee">
+        <option value="none"> Select An Employee...</option>
+        {% for employee in employees %}
+            <option value="{{employee.id}}">{{employee.name}}</option>
+
+        {% endfor %}
+    </select>
+</div> 
+
+<div class="row">
+    <label>Email</label>
+    <input type="email" placeholder="Email.." name="email">
+</div>
+<div class="row">
+    <label>Serial Number</label>
+    <select name="serial_no">
+        <option value="none"> Select A Serial Number...</option>
+        {% for laptop in laptops %}
+            <option value="{{laptop.id}}">{{laptop.serial_no}}</option>
+
+        {% endfor %}
+    </select>
+</div> 
+<div class="row">
+    <label>Previous User</label>
+    <input type="text" placeholder="Email.." name="previous_user">
+</div> -->

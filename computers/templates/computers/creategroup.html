@@ -1,0 +1,25 @@
+{% extends 'computers/base.html' %}
+
+{% block title %}
+    Create Group
+{% endblock title %}
+
+
+
+{% block content %}
+<div class="container m-5">
+    <a class="btn btn-primary btn-sm" href="{% url 'listgroup' %}">Go Back</a>
+    <br>
+    <br>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="row mb-3">
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="group_name" placeholder="Enter a new group name">
+          </div>
+        </div>
+       
+        <button type="submit" class="btn btn-primary">Create</button>
+      </form>
+
+{% endblock content %}

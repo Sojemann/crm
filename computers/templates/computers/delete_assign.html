@@ -1,0 +1,31 @@
+{% extends 'computers/base.html' %}
+
+
+{% block content%}
+
+<br>
+<div id="layoutSidenav_content">
+    <main class="container-fluid">
+        <div class="p-5 rounded" style="background-color:azure;">
+            <h4 style="text-align: center;">Delete Assigned Laptop</h4>
+            <br>
+            
+            <div style="text-align:center">
+                <p>Are you sure you want to delete the laptop assigned to <strong>{{assign.employee}}</strong>?</p>
+            
+                <form action="" method="post">
+                    {% csrf_token %}
+
+                <a href="{% url 'index' %}">Cancel</a>
+
+                <input class= "btn btn-danger" type = "submit" name="Confirm">
+
+            </form>
+
+        </div>
+
+    </div>  
+
+</div>
+            
+{% endblock %}

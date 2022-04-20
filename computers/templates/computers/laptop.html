@@ -1,0 +1,37 @@
+{% extends 'computers/base.html' %}
+
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+<main class="container-fluid">
+    <div class="p-5 rounded" style="background-color:azure;">
+        <!-- <form class="d-flex" style="float: right;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name-search" value="{{search_input}}">
+        </form><br><br><br> -->
+        <h4 style="text-align: center; font-size: 30px;">COMPUTERS</h4>
+        <a href="{% url 'createlaptop' %}" class="btn btn-primary btn-sm" style="float:right;">New Computer</a><br><br>
+        <hr>
+        <table class="table table-success table-striped">
+            {% for laptop in laptops %}
+         <tr>
+            <td><a href="{% url 'laptopdetail' laptop.id %}">{{laptop.serial_no}}</a></td>
+            <td>{{laptop.laptop_model}}</td>
+            <td>{{laptop.type}}</td>
+            <td>{{laptop.memory}}</td>
+            <td>{{laptop.condition}}</td>
+            <td>{{laptop.status}}</td>
+            <td>
+              <a href="{% url 'updatelaptop' laptop.id %}"><i class="fa fa-pencil-square-o fa-fw"></i></a>
+            </td>
+            <td>
+              <a href="{% url 'deletelaptop' laptop.id %}" aria-label="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </td>
+         </tr>   
+
+        {% endfor %}
+        </table>
+    </div>
+</main>
+</div>
+{% endblock %}

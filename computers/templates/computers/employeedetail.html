@@ -1,0 +1,31 @@
+{% extends 'computers/base.html' %}
+
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+<div class="col-md-7 mx-auto">
+  <div class="card mb-3" style="max-width: 800px; background-color: azure;">
+    <a href="{% url 'employee' %}" class="btn btn-primary btn-sm m-3" style="float: left; width: 100px;">Go Back</a><br>
+    <div class="row g-0 mx-auto">
+      <div class="col-md-4">
+        <img src="{{ employee.profile_pic.url }}" class="img-fluid rounded-start" alt="..." style="padding: 10px;">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title">{{employee.name}}</h4>
+          <ul>
+            <div class="card-text"><b>Employee ID:</b> {{employee.employee_id}}</div>
+            <div class="card-text"><b>Department:</b> {{employee.department}}</div>
+            <div class="card-text"><b>Role:</b> {{employee.role}}</div>
+            <div class="card-text"><b>Email:</b> {{employee.email}}</div>
+            <div class="card-text"><b>Phone Number:</b> {{employee.phone}}</div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+{% endblock content %}
+

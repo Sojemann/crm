@@ -1,0 +1,114 @@
+{% extends 'computers/base.html' %}
+
+{% block title %}
+    Homepage
+{% endblock title %}
+
+
+
+{% block content %}
+<br>
+<div>  
+    <main class="container-fluid">
+    <div class="p-5 rounded" style="background-color:azure;">
+        <form class="d-flex" style="float: right;">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="name-search" value="{{search_input}}">
+        </form>
+        <h1>Computer Management System</h1>
+        <br>
+
+        <div class="container-fluid px-4">
+            <!-- <h1 class="mt-4">Laptops Dashboard</h1>
+            <ol class="breadcrumb mb-4">
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol> -->
+            <div class="row">
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-primary text-white mb-4">
+                        <div class="card-body">
+                        <h5 class="card-title" style="font-size: 20px; text-align: center;"> Total Computers</h5>   
+                        <div class='card-text' style="font-size: 20px; text-align: center;">
+                            {{all_laptops}}
+                        </div>    
+
+                        </div>
+                       
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 20px; text-align: center;">Assigned Laptops</h5>
+                            <div class='card-text' style="font-size: 20px; text-align: center;">
+                                {{assigned_laptops}}
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-size: 20px; text-align: center;">Free Laptops</h5>
+                            <div class='card-text' style="font-size: 20px; text-align: center;">
+                                {{unassigned_laptops}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="card bg-warning text-white mb-4">
+                        <div class="card-body">
+                        <h5 class="card-title" style="font-size: 20px; text-align: center;">Desktops</h5>
+                            <div class='card-text' style="font-size: 20px; text-align: center;">
+                                {{all_desktops}}
+                            </div>                     
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% if user.is_admin %}
+        <a href="{% url 'assignlaptop' %}" class="btn btn-primary btn-sm" style="float:right;">Assign Laptop</a><br><br>
+        {% endif %}
+        <hr>
+        <table class="table table-success table-striped">
+            <tr>
+                <th>Employee</th>
+                <th>Email</th>
+                <th>Serial No</th>
+                <th>Previous User</th>
+                {% if user.is_admin%}
+                <th></th>
+                <th></th>
+                {% endif %}
+            </tr>
+            {% for assign in assigns %}
+            <tr>
+                <td>{{assign.employee}}</td>
+                <td>{{assign.email}}</td>
+                <td><a href="{% url 'assigndetail' assign.id %}">{{assign.serial_no}}</a></td>
+                <td>{{assign.previous_user}}</td>
+                {% if user.is_admin%}
+                <td>
+                    <a href="#"><i class="fa fa-pencil-square-o fa-fw"></i></a>
+                </td>
+                <td>
+                    <a href="{% url 'deleteassign' assign.id %}" aria-label="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                </td>
+                {% endif %}
+            </tr>
+
+            {% empty %}
+            
+                <p>Name does not exist</p>
+
+            {% endfor %}
+        </table>
+    </div>
+</main>
+</div>
+
+
+{% endblock content %}

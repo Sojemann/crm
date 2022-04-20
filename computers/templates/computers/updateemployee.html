@@ -1,0 +1,41 @@
+{% extends 'computers/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+<div id="layoutSidenav_content">
+    <main class="container-fluid">
+        <div class="p-5 rounded" style="background-color:azure;">
+            <h4 style="text-align: center;font-size: 30px;">UPDATE EMPLOYEE</h4>
+            <a href="{% url 'employee' %}" class="btn btn-primary btn-sm" style="float: left; width: 100px;">Go
+                Back</a><br><br>
+            <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form.name|as_crispy_field}}
+                <br>
+                {{form.employee_id|as_crispy_field}}
+                <br>
+                {{form.department|as_crispy_field}}
+                <br>
+                {{form.role|as_crispy_field}}
+                <br>
+                <div class="row">
+                    <div class="col-md-6">
+                        {{form.email|as_crispy_field}}
+                    </div>
+                    <div class="col-md-6">
+                        {{form.phone|as_crispy_field}}
+                    </div>
+                </div>
+                <br>
+                {{form.profile_pic|as_crispy_field}}
+                <br>
+                <input class="btn btn-primary" type="submit" value="Submit"> 
+                
+            </form>
+        </div> 
+         
+    </main>
+</div>
+{% endblock %}

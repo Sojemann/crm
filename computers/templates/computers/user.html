@@ -1,0 +1,68 @@
+{% extends 'computers/base.html' %}
+
+
+{% block title %}
+User Account
+{% endblock %}
+
+{% block content %}
+<br>
+<style>
+    table {
+      font-family: arial, sans-serif;
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    td, th {
+      border: 1px solid #dddddd;
+      text-align: left;
+      padding: 8px;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #dddddd;
+    }
+</style>
+<div>   
+<main class="container-fluid">
+    <div class="p-5 rounded" style="background-color:azure;">
+        <h1><strong>Users</strong></h1>
+        
+        <a class="btn btn-primary" href="#" role="button" style="float:right;">New User</a>
+
+        <br>
+        <br>
+
+        <hr>
+<table class="table table-success table-striped">
+          <tr>
+            <th>Email</th>
+            <th>Name</th>
+            <th>Date Joined</th>
+            <th>Last Login</th>
+            <th></th>
+            <th></th>
+        </tr>
+        {% for account in accounts %}
+            <tr>
+                <td><a href="{% url 'userdetails' account.id %}"> {{account.email}}</a></td>
+                <td> {{account.username}}</td>
+                <td>{{account.date_joined}}</td>
+                <td>{{account.last_login}}</td>
+                <td>
+                    <a href="{% url 'updateuser' account.id %}"><i class="fa fa-pencil-square-o fa-fw"></i></a>
+                  </td>
+                  <td>
+                    <a href="#" aria-label="Delete"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                  </td>
+      
+            </tr>
+        {% endfor %}
+    
+</table>
+</div>
+</main>
+</div>
+
+{% endblock content %}
